@@ -39,7 +39,7 @@ class GeneracService<T extends GenericModelFunction<T>> extends BaseServics {
   }) async {
     try {
       T? t;
-      // discus token status
+      //* discus token status
       if (token == null) {
         response = await dio.get(idForSingelThings == null
             ? baseUrl
@@ -49,7 +49,7 @@ class GeneracService<T extends GenericModelFunction<T>> extends BaseServics {
             idForSingelThings == null ? baseUrl : '$baseUrl/$idForSingelThings',
             options: Options(headers: {'token': token}));
       }
-      // to easy use and write
+      //* to easy use and write
       dynamic data = response.data;
 
       if (response.statusCode == 200) {
@@ -102,6 +102,5 @@ class GeneracService<T extends GenericModelFunction<T>> extends BaseServics {
     } catch (e) {
       return DataError<T>(error: e.toString());
     }
-    // return DataError(error: "error"); //!   <============{
   }
 }
