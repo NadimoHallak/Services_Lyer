@@ -4,8 +4,13 @@ abstract class DataState<T> {
   T? data;
   DioException? exception;
   String? error;
+  String? message;
 
-  DataState({this.data, this.error, this.exception});
+  DataState({this.data, this.error, this.exception, this.message});
+}
+
+class DataMessage<T> extends DataState<T> {
+  DataMessage({required String message}) : super(message: message);
 }
 
 class DataGetting<T> extends DataState<T> {
@@ -17,5 +22,6 @@ class DataError<T> extends DataState<T> {
 }
 
 class DataException<T> extends DataState<T> {
-  DataException({required DioException exception}) : super(exception: exception);
+  DataException({required DioException exception})
+      : super(exception: exception);
 }
